@@ -1,29 +1,98 @@
-import React, { useState } from "react";
-import Button from "@material-ui/core/Button";
+import React, { useState, useEffect } from "react";
+import { popBgAction } from "../actions";
+import SubHeader from "./SubHeader";
+import { connect } from "react-redux";
 
-import Sub_Header from "./Sub_Header";
+const Header = (props) => {
+  const [visiView, setVisiView] = useState(false);
+  const [visiContacts, setVisiContacts] = useState(false);
+  const [visiSetting, setVisiSetting] = useState(false);
 
-const Header = () => {
-  const [visi, setVisi] = useState("");
+  const onTabClick = (tab) => {
+    switch (tab) {
+      case "Views":
+        setVisiView(true);
+        break;
+
+      case "Contacts":
+        setVisiContacts(true);
+        break;
+
+      case "Setting":
+        setVisiSetting(true);
+        break;
+
+      default:
+        break;
+    }
+    props.popBgAction(true);
+  };
+
+  // If everytime props.PopReducer changes to false, run this function. 
+  useEffect(() => {
+    if (props.PopReducer == false) {
+      setVisiView(false);
+      setVisiContacts(false);
+      setVisiSetting(false);
+    }
+  }, [props.PopReducer]);
 
   return (
     <div style={{ display: "flex" }}>
       <div className="header_item_w">
-        <button onClick={() => setVisi("Views")}>Views</button>
-        <Sub_Header title="Views" display={visi} />
+        <button onClick={() => onTabClick("Views")}>Views</button>
+        {/* <SubHeader title="Views" display={visi} /> */}
+        <div className="sub_menu">
+          <div className={`subViews ${(visiView && props.PopReducer) ? "visible" : ""}`}>
+            <p>
+              <a href="/">Grid</a>
+            </p>
+            <p>
+              <a href="/detail">Detail</a>
+            </p>
+          </div>
+        </div>
       </div>
 
       <div className="header_item_w">
-        <button onClick={() => setVisi("Contacts")}>Contacts</button>
-        <Sub_Header title="Contacts" display={visi} />
+        <button onClick={() => onTabClick("Contacts")}>Contacts</button>
+        {/* <SubHeader title="Contacts" display={visi} /> */}
+        <div className="sub_menu">
+          <div className={`subContacts ${(visiContacts && props.PopReducer) ? "visible" : ""}`}>
+            <p>
+              <a href="/chat">Chat</a>
+            </p>
+            <p>
+              <a href="/groups">Groups</a>
+            </p>
+          </div>
+        </div>
       </div>
 
       <div className="header_item_w">
-        <button onClick={() => setVisi("Setting")}>Setting</button>
-        <Sub_Header title="Setting" display={visi} />
+        <button onClick={() => onTabClick("Setting")}>Setting</button>
+        {/* <SubHeader title="Setting" display={visi} /> */}
+        <div className="sub_menu">
+          <div className={`subSetting ${(visiSetting && props.PopReducer) ? "visible" : ""}`}>
+            <p>
+              <a href="/profile">Profile</a>
+            </p>
+            <p>
+              <a href="/account">My account</a>
+            </p>
+            <p>
+              <a href="/logout">Logout</a>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    PopReducer: state.PopReducerState,
+  };
+};
+export default connect(mapStateToProps, { popBgAction })(Header);

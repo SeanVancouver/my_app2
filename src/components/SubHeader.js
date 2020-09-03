@@ -1,21 +1,13 @@
 import React from "react";
-
-import { makeStyles } from "@material-ui/core/styles";
-
-import Paper from "@material-ui/core/Paper";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import Fade from "@material-ui/core/Fade";
-import Button from "@material-ui/core/Button";
+import { popBgAction } from "../actions";
+import { connect } from "react-redux";
 
 const get_views = (display, title) => {
   if (display == title) {
     return (
       <div>
         <p>
-          <a href="/grid">Grid</a>
+          <a href="/">Grid</a>
         </p>
         <p>
           <a href="/detail">Detail</a>
@@ -56,22 +48,34 @@ const get_setting = (display, title) => {
   }
 };
 
-const Sub_Header = ({ display, title }) => {
+// const SubHeader = ( { display, title }) => {
+
+const SubHeader = (props) => {
   const sub_item = () => {
-    console.log(display + " " + title);
-    switch (title) {
+    switch (props.title) {
       case "Views":
-        return get_views(display, title);
+        console.log(props.display + " " + props.title);
+        return get_views(props.display, props.title);
       case "Contacts":
-        return get_contacts(display, title);
+        return get_contacts(props.display, props.title);
       case "Setting":
-        return get_setting(display, title);
+        return get_setting(props.display, props.title);
       default:
         return null;
     }
   };
 
-  return <div className="sub_menu">{sub_item()}</div>;
+  return (
+    <div className={`sub_menu ${props.PopReducer ? "" : "hidepop"}`}>
+      {sub_item()}
+    </div>
+  );
 };
 
-export default Sub_Header;
+const mapStateToProps = (state) => {
+  return { PopReducer: state.PopReducerState };
+};
+
+export default connect(mapStateToProps, null)(SubHeader);
+
+// export default SubHeader;
