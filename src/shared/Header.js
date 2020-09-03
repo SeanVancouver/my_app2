@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { popBgAction } from "../actions";
-import SubHeader from "./SubHeader";
+import { Link } from "react-router-dom";
+
 import { connect } from "react-redux";
 
 const Header = (props) => {
@@ -28,7 +29,7 @@ const Header = (props) => {
     props.popBgAction(true);
   };
 
-  // If everytime props.PopReducer changes to false, run this function. 
+  // If everytime props.PopReducer changes to false, run this function.
   useEffect(() => {
     if (props.PopReducer == false) {
       setVisiView(false);
@@ -43,12 +44,16 @@ const Header = (props) => {
         <button onClick={() => onTabClick("Views")}>Views</button>
         {/* <SubHeader title="Views" display={visi} /> */}
         <div className="sub_menu">
-          <div className={`subViews ${(visiView && props.PopReducer) ? "visible" : ""}`}>
+          <div
+            className={`subViews ${
+              visiView && props.PopReducer ? "visible" : ""
+            }`}
+          >
             <p>
-              <a href="/">Grid</a>
+              <Link to="/view-grid">Grid</Link>
             </p>
             <p>
-              <a href="/detail">Detail</a>
+              <Link to="/view-detail">Detail</Link>
             </p>
           </div>
         </div>
@@ -58,12 +63,16 @@ const Header = (props) => {
         <button onClick={() => onTabClick("Contacts")}>Contacts</button>
         {/* <SubHeader title="Contacts" display={visi} /> */}
         <div className="sub_menu">
-          <div className={`subContacts ${(visiContacts && props.PopReducer) ? "visible" : ""}`}>
+          <div
+            className={`subContacts ${
+              visiContacts && props.PopReducer ? "visible" : ""
+            }`}
+          >
             <p>
-              <a href="/chat">Chat</a>
+              <Link to="/chat">Chat</Link>
             </p>
             <p>
-              <a href="/groups">Groups</a>
+              <Link to="/groups">Groups</Link>
             </p>
           </div>
         </div>
@@ -73,15 +82,19 @@ const Header = (props) => {
         <button onClick={() => onTabClick("Setting")}>Setting</button>
         {/* <SubHeader title="Setting" display={visi} /> */}
         <div className="sub_menu">
-          <div className={`subSetting ${(visiSetting && props.PopReducer) ? "visible" : ""}`}>
+          <div
+            className={`subSetting ${
+              visiSetting && props.PopReducer ? "visible" : ""
+            }`}
+          >
             <p>
-              <a href="/profile">Profile</a>
+              <Link to="/profile">Profile</Link>
             </p>
             <p>
-              <a href="/account">My account</a>
+              <Link to="/account">My account</Link>
             </p>
             <p>
-              <a href="/logout">Logout</a>
+              <Link to="/logout">Logout</Link>
             </p>
           </div>
         </div>

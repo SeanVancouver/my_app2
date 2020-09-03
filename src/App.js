@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
-import GridView from "./components/GridView";
-import DetailView from "./components/DetailView";
-import Header from "./components/Header";
-import ModalBg from "./components/ModalBg";
-import Modal from "./reusable/modal";
+import GridView from "./components/Views/GridView";
+import DetailView from "./components/Views/DetailView";
+import Header from "./shared/Header";
+import ModalBg from "./shared/PopBg";
+import Modal from "./shared/Modal";
 import history from "./history";
 import { fetchUsers } from "./actions";
 
@@ -28,7 +28,8 @@ const App = (props) => {
         </div>
         <Switch>
           <Route path="/" exact component={GridView} />
-          <Route path="/detail" exact component={DetailView} />
+          <Route path="/view-grid" exact component={GridView} />
+          <Route path="/view-detail" exact component={DetailView} />
         </Switch>
       </Router>
       <ModalBg />
@@ -47,4 +48,4 @@ const mapStateToProps = (state) => {
   return { ProfileReducer: state.ProfileReducer };
 };
 
-export default connect(mapStateToProps, { fetchUsers })(App);
+export default connect(null, { fetchUsers })(App);

@@ -15,8 +15,8 @@ const FilterProfiles = (mapSelection, filterList) => {
       return (
         (parseInt(s.age) < parseInt(filterList.age) ||
           filterList.age === "any") &&
-        (s.sex === filterList.sex || filterList.sex === "any") &&
-        (s.desc.includes(filterList.keyword) || filterList.keyword === "any")
+        (s.sex === filterList.sex || filterList.sex === "any")
+        // && (s.desc.includes(filterList.keyword) || filterList.keyword === "any")
       );
     });
 

@@ -1,6 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+} from "../../../node_modules/react";
 import { filterUsers, filterState } from "../../actions";
-import { connect } from "react-redux";
+import { connect } from "../../../node_modules/react-redux";
 
 const FilterModal = (props) => {
   const [rangeValue, setRangeValue] = useState(false);

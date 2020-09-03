@@ -14,8 +14,7 @@ const getFakerUsers = () => {
 };
 
 const getOneProfile = () => {
-
-  let gender = ['male', 'female']; 
+  let gender = ["male", "female"];
 
   return {
     id: faker.random.uuid(),
@@ -23,7 +22,7 @@ const getOneProfile = () => {
     name: faker.name.firstName(),
     age: Math.floor(Math.random() * 100),
     sex: gender[Math.floor(Math.random() * gender.length)],
-    desc: faker.lorem.paragraph(),
+    // desc: faker.lorem.paragraph(),
   };
 };
 

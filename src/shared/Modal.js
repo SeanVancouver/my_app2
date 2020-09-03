@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import { showModal } from "../actions";
-import FilterModal from "./modal_components/FilterModal";
+import FilterModal from "./Modal_content/FilterModal";
 // const Modal = (props) => {
 //   if (props.ModalReducer) {
 //     console.log("props.PopReducer.name " + JSON.stringify(props.ModalReducer));
@@ -21,8 +21,6 @@ import FilterModal from "./modal_components/FilterModal";
 // };
 
 const Modal = (props) => {
-
-
   useEffect(() => {
     if (props.PopReducer == false) {
       props.showModal(null);
@@ -32,7 +30,6 @@ const Modal = (props) => {
   console.log("props.PopReducer.name " + JSON.stringify(props.ModalReducer));
 
   if (props.ModalReducer && props.PopReducer) {
-    
     if (props.ModalReducer.modalType == "profile") {
       return (
         <div className="popModal">
@@ -45,11 +42,8 @@ const Modal = (props) => {
     }
 
     if (props.ModalReducer.modalType == "filter") {
-      return (
-          <FilterModal />
-      );
+      return <FilterModal />;
     }
-
   }
   return "";
 };
@@ -61,6 +55,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {showModal})(Modal);
+export default connect(mapStateToProps, { showModal })(Modal);
 
 // export default Modal;
