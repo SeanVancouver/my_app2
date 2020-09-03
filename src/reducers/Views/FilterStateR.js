@@ -1,4 +1,4 @@
-const FilterStateReducer = (state = null, action) => {
+const FilterStateR = (state = null, action) => {
   console.log("FILTER_STATEFILTER_STATE " + action.type);
   switch (action.type) {
     case "FILTER_STATE":
@@ -9,4 +9,4 @@ const FilterStateReducer = (state = null, action) => {
   }
 };
 
-export default FilterStateReducer;
+export default FilterStateR;

@@ -16,7 +16,7 @@ export const usersA = () => {
   };
 };
 
-export const filterUsers = (filteree, filtered) => async (dispatch) => {
+export const filterA = (filteree, filtered) => async (dispatch) => {
   dispatch({
     type: "FILTER_USERS",
     payload: FilterProfiles(filteree, filtered),

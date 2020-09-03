@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { filterUsers } from "../../../actions";
+import { filterA } from "../../../actions";
 import { connect } from "react-redux";
 
 const FilterModal = (props) => {
@@ -21,12 +21,12 @@ const FilterModal = (props) => {
       }
     });
 
-    props.filterUsers(props.usersR, mapSelection);
+    props.filterA(props.usersR, mapSelection);
   };
 
   const onFormClear = () => {
     console.log("realllyy?");
-    props.filterUsers(props.usersR, null);
+    props.filterA(props.usersR, null);
   };
 
   return (
@@ -57,4 +57,4 @@ const mapStateToProps = (state) => {
     usersR: state.usersR,
   };
 };
-export default connect(mapStateToProps, { filterUsers })(FilterModal);
+export default connect(mapStateToProps, { filterA })(FilterModal);

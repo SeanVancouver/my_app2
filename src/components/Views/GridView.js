@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import { popBgA, usersA, filterUsers, showModalA } from "../../actions";
+import { popBgA, usersA, filterA, showModalA } from "../../actions";
 import { connect } from "react-redux";
 
 const GridView = (props) => {
   // console.log("gridview " + JSON.stringify(props));
 
   useEffect(() => {
-    props.filterUsers(props.usersR, props.FilterStateReducer);
+    props.filterA(props.usersR, props.FilterStateR);
   }, [props.usersR]);
 
   const modalClicked = (profileArr) => {
@@ -14,7 +14,7 @@ const GridView = (props) => {
     props.popBgA(true);
   };
 
-  let profilesLoad = props.FilterReducer ? props.FilterReducer : props.usersR;
+  let profilesLoad = props.FilterR ? props.FilterR : props.usersR;
 
   // console.log('+++++' + JSON.stringify(profilesLoad) + ' ------- ' + JSON.stringify(props.usersR) );
 
@@ -43,7 +43,7 @@ const GridView = (props) => {
     });
   };
   return (
-    <div className="gview_container">
+    <div className="view_container">
       <div className="filter">
         <button
           onClick={() => {
@@ -65,22 +65,17 @@ const GridView = (props) => {
   );
 };
 
-// const GridView = (props) => {
-//   console.log("gridview " + JSON.stringify(props));
-//   return <div>text</div>;
-// };
-
 const mapStateToProps = (state) => {
   return {
     usersR: state.usersR,
     popBgR: state.popBgR,
-    FilterReducer: state.FilterReducer,
-    FilterStateReducer: state.FilterStateReducer,
+    FilterR: state.FilterR,
+    FilterStateR: state.FilterStateR,
   };
 };
 export default connect(mapStateToProps, {
   showModalA,
   popBgA,
   usersA,
-  filterUsers,
+  filterA,
 })(GridView);

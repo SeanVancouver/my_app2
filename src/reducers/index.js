@@ -4,8 +4,8 @@ import childReducer from "./childReducer";
 import popBgR from "./shared/popBgR";
 import usersR from "./Views/usersR";
 import ModalR from "./shared/ModalR";
-import FilterReducer from "./Views/FilterReducer";
-import FilterStateReducer from "./Views/FilterStateReducer";
+import FilterR from "./Views/FilterR";
+import FilterStateR from "./Views/FilterStateR";
 
 export default combineReducers({
   childReducer: childReducer,
@@ -13,6 +13,6 @@ export default combineReducers({
   form: formReducer,
   usersR: usersR,
   ModalR: ModalR,
-  FilterReducer: FilterReducer,
-  FilterStateReducer: FilterStateReducer,
+  FilterR: FilterR,
+  FilterStateR: FilterStateR,
 });
