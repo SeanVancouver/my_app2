@@ -3,9 +3,9 @@ import { Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import GridView from "./components/Views/GridView";
 import DetailView from "./components/Views/DetailView";
-import Header from "./shared/Header";
-import ModalBg from "./shared/PopBg";
-import Modal from "./shared/Modal";
+import Header from "./components/shared/Header";
+import ModalBg from "./components/shared/PopBg";
+import Modal from "./components/shared/Modal";
 import history from "./history";
 import { usersA } from "./actions";
 

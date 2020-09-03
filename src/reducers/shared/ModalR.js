@@ -1,4 +1,4 @@
-const ModalReducer = (state = null, action) => {
+const ModalR = (state = null, action) => {
   switch (action.type) {
     case "SHOW_MODAL":
       return action.payload;
@@ -8,4 +8,4 @@ const ModalReducer = (state = null, action) => {
   }
 };
 
-export default ModalReducer;
+export default ModalR;

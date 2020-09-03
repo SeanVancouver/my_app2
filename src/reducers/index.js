@@ -3,7 +3,7 @@ import { reducer as formReducer } from "redux-form";
 import childReducer from "./childReducer";
 import PopReducer from "./shared/PopReducer";
 import usersR from "./Views/usersR";
-import ModalReducer from "./shared/ModalReducer";
+import ModalR from "./shared/ModalR";
 import FilterReducer from "./Views/FilterReducer";
 import FilterStateReducer from "./Views/FilterStateReducer";
 
@@ -14,7 +14,7 @@ export default combineReducers({
   PopReducerState: PopReducer,
   form: formReducer,
   usersR: usersR,
-  ModalReducer: ModalReducer,
+  ModalR: ModalR,
   FilterReducer: FilterReducer,
   FilterStateReducer: FilterStateReducer,
 });

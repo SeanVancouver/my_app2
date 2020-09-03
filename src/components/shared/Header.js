@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { popBgAction } from "../actions";
+import { popBgAction } from "../../actions";
 import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";

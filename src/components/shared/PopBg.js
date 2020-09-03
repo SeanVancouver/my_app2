@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { popBgAction } from "../actions";
+import { popBgAction } from "../../actions";
 
 const ModalBg = (props) => {
   const closePopBG = () => {
@@ -9,9 +9,9 @@ const ModalBg = (props) => {
 
   let bgType = "";
 
-  if (props.PopReducer && props.ModalReducer) {
+  if (props.PopReducer && props.ModalR) {
     bgType = "show dark";
-  } else if (props.PopReducer && !props.ModalReducer) {
+  } else if (props.PopReducer && !props.ModalR) {
     bgType = "show";
   }
 
@@ -28,7 +28,7 @@ const ModalBg = (props) => {
 const mapStateToProps = (state) => {
   return {
     PopReducer: state.PopReducerState,
-    ModalReducer: state.ModalReducer,
+    ModalR: state.ModalR,
   };
 };
 
