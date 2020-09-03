@@ -1,19 +1,17 @@
 import React, { useEffect } from "react";
-import { showModalA } from "../../actions";
-import { popBgAction, usersA, filterUsers } from "../../actions";
+import { popBgA, usersA, filterUsers, showModalA } from "../../actions";
 import { connect } from "react-redux";
 
 const GridView = (props) => {
   // console.log("gridview " + JSON.stringify(props));
 
   useEffect(() => {
-    console.log(" props.FilterStateReducer xxxx " + props.FilterStateReducer);
     props.filterUsers(props.usersR, props.FilterStateReducer);
   }, [props.usersR]);
 
   const modalClicked = (profileArr) => {
     props.showModalA(profileArr);
-    props.popBgAction(true);
+    props.popBgA(true);
   };
 
   let profilesLoad = props.FilterReducer ? props.FilterReducer : props.usersR;
@@ -75,14 +73,14 @@ const GridView = (props) => {
 const mapStateToProps = (state) => {
   return {
     usersR: state.usersR,
-    PopReducer: state.PopReducerState,
+    popBgR: state.popBgR,
     FilterReducer: state.FilterReducer,
     FilterStateReducer: state.FilterStateReducer,
   };
 };
 export default connect(mapStateToProps, {
   showModalA,
-  popBgAction,
+  popBgA,
   usersA,
   filterUsers,
 })(GridView);

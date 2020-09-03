@@ -1,35 +1,28 @@
 import React from "react";
 import { connect } from "react-redux";
-import { popBgAction } from "../../actions";
+import { popBgA } from "../../actions";
 
 const ModalBg = (props) => {
   const closePopBG = () => {
-    props.popBgAction(false);
+    props.popBgA(false);
   };
 
   let bgType = "";
 
-  if (props.PopReducer && props.ModalR) {
+  if (props.popBgR && props.ModalR) {
     bgType = "show dark";
-  } else if (props.PopReducer && !props.ModalR) {
+  } else if (props.popBgR && !props.ModalR) {
     bgType = "show";
   }
 
-  return (
-    <div
-      id="popBG"
-      // className={`${props.PopReducer ? "show" : ""}`}
-      className={bgType}
-      onClick={() => closePopBG()}
-    ></div>
-  );
+  return <div id="popBG" className={bgType} onClick={() => closePopBG()}></div>;
 };
 
 const mapStateToProps = (state) => {
   return {
-    PopReducer: state.PopReducerState,
+    popBgR: state.popBgR,
     ModalR: state.ModalR,
   };
 };
 
-export default connect(mapStateToProps, { popBgAction })(ModalBg);
+export default connect(mapStateToProps, { popBgA })(ModalBg);

@@ -5,9 +5,9 @@ export const showModalA = (infoArr) => {
   };
 };
 
-export const popBgAction = (onoff) => {
+export const popBgA = (onoff) => {
   return {
-    type: "BG_POPS",
+    type: "POP_BG",
     payload: onoff,
   };
 };

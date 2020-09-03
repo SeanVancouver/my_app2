@@ -1,6 +1,6 @@
-const PopReducer = (state = false, action) => {
+const popBgR = (state = false, action) => {
   switch (action.type) {
-    case "BG_POPS":
+    case "POP_BG":
       return action.payload;
 
     default:
@@ -8,4 +8,4 @@ const PopReducer = (state = false, action) => {
   }
 };
 
-export default PopReducer;
+export default popBgR;

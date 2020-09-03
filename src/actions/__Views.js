@@ -1,12 +1,12 @@
 import getFakerUsers from "../helpers/Views/getFakerUsers";
 import FilterProfiles from "../helpers/Views/FilterProfiles";
 
-export const filterState = (mapSelection) => {
-  return {
-    type: "FILTER_STATE",
-    payload: mapSelection,
-  };
-};
+// export const filterState = (mapSelection) => {
+//   return {
+//     type: "FILTER_STATE",
+//     payload: mapSelection,
+//   };
+// };
 
 export const usersA = () => {
   return {

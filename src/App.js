@@ -11,7 +11,7 @@ import { usersA } from "./actions";
 
 const App = (props) => {
   // const closePopBG = () => {
-  //   props.popBgAction(false);
+  //   props.popBgA(false);
   // };
 
   props.usersA();
@@ -37,7 +37,7 @@ const App = (props) => {
 
       {/* <div
         id="popBG"
-        className={`${props.PopReducer ? "show" : ""}`}
+        className={`${props.popBgR ? "show" : ""}`}
         onClick={() => closePopBG()}
       ></div> */}
     </div>

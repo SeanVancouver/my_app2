@@ -3,33 +3,15 @@ import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import { showModalA } from "../../actions";
 import FilterModal from "./Modal_content/FilterModal";
-// const Modal = (props) => {
-//   if (props.ModalR) {
-//     console.log("props.PopReducer.name " + JSON.stringify(props.ModalR));
-
-//     debugger;
-
-//     return ReactDOM.createPortal(
-//       <div className="popModal">
-//         <div>{props.ModalR.name}</div>
-//         <div>{props.ModalR.age}</div>
-//       </div>,
-//       document.querySelector("#modal")
-//     );
-//   }
-//   return "";
-// };
 
 const Modal = (props) => {
   useEffect(() => {
-    if (props.PopReducer == false) {
+    if (props.popBgR == false) {
       props.showModalA(null);
     }
-  }, [props.PopReducer]);
+  }, [props.popBgR]);
 
-  console.log("props.PopReducer.name " + JSON.stringify(props.ModalR));
-
-  if (props.ModalR && props.PopReducer) {
+  if (props.ModalR && props.popBgR) {
     if (props.ModalR.modalType == "profile") {
       return (
         <div className="popModal">
@@ -51,7 +33,7 @@ const Modal = (props) => {
 const mapStateToProps = (state) => {
   return {
     ModalR: state.ModalR,
-    PopReducer: state.PopReducerState,
+    popBgR: state.popBgR,
   };
 };
 

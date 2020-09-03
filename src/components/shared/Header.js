@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { popBgAction } from "../../actions";
+import { popBgA } from "../../actions";
 import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
@@ -26,17 +26,17 @@ const Header = (props) => {
       default:
         break;
     }
-    props.popBgAction(true);
+    props.popBgA(true);
   };
 
-  // If everytime props.PopReducer changes to false, run this function.
+  // If everytime props.popBgR changes to false, run this function.
   useEffect(() => {
-    if (props.PopReducer == false) {
+    if (props.popBgR == false) {
       setVisiView(false);
       setVisiContacts(false);
       setVisiSetting(false);
     }
-  }, [props.PopReducer]);
+  }, [props.popBgR]);
 
   return (
     <div style={{ display: "flex" }}>
@@ -45,9 +45,7 @@ const Header = (props) => {
         {/* <SubHeader title="Views" display={visi} /> */}
         <div className="sub_menu">
           <div
-            className={`subViews ${
-              visiView && props.PopReducer ? "visible" : ""
-            }`}
+            className={`subViews ${visiView && props.popBgR ? "visible" : ""}`}
           >
             <p>
               <Link to="/view-grid">Grid</Link>
@@ -65,7 +63,7 @@ const Header = (props) => {
         <div className="sub_menu">
           <div
             className={`subContacts ${
-              visiContacts && props.PopReducer ? "visible" : ""
+              visiContacts && props.popBgR ? "visible" : ""
             }`}
           >
             <p>
@@ -84,7 +82,7 @@ const Header = (props) => {
         <div className="sub_menu">
           <div
             className={`subSetting ${
-              visiSetting && props.PopReducer ? "visible" : ""
+              visiSetting && props.popBgR ? "visible" : ""
             }`}
           >
             <p>
@@ -105,7 +103,7 @@ const Header = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    PopReducer: state.PopReducerState,
+    popBgR: state.popBgR,
   };
 };
-export default connect(mapStateToProps, { popBgAction })(Header);
+export default connect(mapStateToProps, { popBgA })(Header);
