@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { showModal } from "../../actions";
-import { popBgAction, fetchUsers, filterUsers } from "../../actions";
+import { showModalA } from "../../actions";
+import { popBgAction, usersA, filterUsers } from "../../actions";
 import { connect } from "react-redux";
 
 const GridView = (props) => {
@@ -8,22 +8,20 @@ const GridView = (props) => {
 
   useEffect(() => {
     console.log(" props.FilterStateReducer xxxx " + props.FilterStateReducer);
-    props.filterUsers(props.ProfileReducer, props.FilterStateReducer);
-  }, [props.ProfileReducer]);
+    props.filterUsers(props.usersR, props.FilterStateReducer);
+  }, [props.usersR]);
 
   const modalClicked = (profileArr) => {
-    props.showModal(profileArr);
+    props.showModalA(profileArr);
     props.popBgAction(true);
   };
 
-  let profilesLoad = props.FilterReducer
-    ? props.FilterReducer
-    : props.ProfileReducer;
+  let profilesLoad = props.FilterReducer ? props.FilterReducer : props.usersR;
 
-  // console.log('+++++' + JSON.stringify(profilesLoad) + ' ------- ' + JSON.stringify(props.ProfileReducer) );
+  // console.log('+++++' + JSON.stringify(profilesLoad) + ' ------- ' + JSON.stringify(props.usersR) );
 
   const gridArray = () => {
-    // return props.ProfileReducer.map((eachProfile) => {
+    // return props.usersR.map((eachProfile) => {
     return profilesLoad.map((eachProfile) => {
       // console.log(eachProfile);
       return (
@@ -58,7 +56,7 @@ const GridView = (props) => {
         </button>
         <button
           onClick={() => {
-            props.fetchUsers();
+            props.usersA();
           }}
         >
           R<br />E<br />F<br />R<br />E<br />S<br />H
@@ -76,15 +74,15 @@ const GridView = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    ProfileReducer: state.ProfileReducerState,
+    usersR: state.usersR,
     PopReducer: state.PopReducerState,
     FilterReducer: state.FilterReducer,
     FilterStateReducer: state.FilterStateReducer,
   };
 };
 export default connect(mapStateToProps, {
-  showModal,
+  showModalA,
   popBgAction,
-  fetchUsers,
+  usersA,
   filterUsers,
 })(GridView);

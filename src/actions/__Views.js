@@ -8,9 +8,9 @@ export const filterState = (mapSelection) => {
   };
 };
 
-export const fetchUsers = () => {
+export const usersA = () => {
   return {
-    type: "GET_USERS",
+    type: "USERS",
     payload: getFakerUsers(),
     // payload: { test: "123" },
   };

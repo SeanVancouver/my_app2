@@ -7,17 +7,17 @@ import Header from "./shared/Header";
 import ModalBg from "./shared/PopBg";
 import Modal from "./shared/Modal";
 import history from "./history";
-import { fetchUsers } from "./actions";
+import { usersA } from "./actions";
 
 const App = (props) => {
   // const closePopBG = () => {
   //   props.popBgAction(false);
   // };
 
-  props.fetchUsers();
+  props.usersA();
   // useEffect(() => {
   //   console.log("why continuous call?");
-  //   props.fetchUsers();
+  //   props.usersA();
   // }, []);
 
   return (
@@ -45,7 +45,7 @@ const App = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return { ProfileReducer: state.ProfileReducer };
+  return { usersR: state.usersR };
 };
 
-export default connect(null, { fetchUsers })(App);
+export default connect(null, { usersA })(App);

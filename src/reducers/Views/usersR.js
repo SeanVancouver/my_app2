@@ -1,7 +1,7 @@
-const ProfileReducer = (state = null, action) => {
+const usersR = (state = null, action) => {
   console.log(action.type + "===> " + action.payload);
   switch (action.type) {
-    case "GET_USERS":
+    case "USERS":
       return action.payload;
 
     default:
@@ -9,4 +9,4 @@ const ProfileReducer = (state = null, action) => {
   }
 };
 
-export default ProfileReducer;
+export default usersR;

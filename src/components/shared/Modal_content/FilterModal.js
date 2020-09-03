@@ -1,10 +1,6 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-} from "../../../node_modules/react";
-import { filterUsers, filterState } from "../../actions";
-import { connect } from "../../../node_modules/react-redux";
+import React, { useState, useEffect, useRef } from "react";
+import { filterUsers, filterState } from "../../../actions";
+import { connect } from "react-redux";
 
 const FilterModal = (props) => {
   const [rangeValue, setRangeValue] = useState(false);
@@ -25,15 +21,13 @@ const FilterModal = (props) => {
       }
     });
 
-    console.log("  @@@@@@@    " + props.ProfileReducer);
-
-    props.filterUsers(props.ProfileReducer, mapSelection);
+    props.filterUsers(props.usersR, mapSelection);
     // props.filterState(mapSelection);
   };
 
   const onFormClear = () => {
     console.log("realllyy?");
-    props.filterUsers(props.ProfileReducer, null);
+    props.filterUsers(props.usersR, null);
   };
 
   return (
@@ -61,7 +55,7 @@ const FilterModal = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    ProfileReducer: state.ProfileReducerState,
+    usersR: state.usersR,
   };
 };
 export default connect(mapStateToProps, { filterUsers, filterState })(

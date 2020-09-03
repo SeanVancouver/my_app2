@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
-import { showModal } from "../actions";
+import { showModalA } from "../../actions";
 import FilterModal from "./Modal_content/FilterModal";
 // const Modal = (props) => {
 //   if (props.ModalReducer) {
@@ -23,7 +23,7 @@ import FilterModal from "./Modal_content/FilterModal";
 const Modal = (props) => {
   useEffect(() => {
     if (props.PopReducer == false) {
-      props.showModal(null);
+      props.showModalA(null);
     }
   }, [props.PopReducer]);
 
@@ -55,6 +55,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { showModal })(Modal);
+export default connect(mapStateToProps, { showModalA })(Modal);
 
 // export default Modal;
