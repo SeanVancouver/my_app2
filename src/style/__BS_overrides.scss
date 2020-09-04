@@ -1,0 +1,21 @@
+.container {
+  padding: 0;
+  margin: 0;
+}
+
+.navbar {
+  justify-content: center;
+}
+a {
+  color: #ffffff;
+}
+
+.side_wrapper .nav {
+  padding-top: 15px;
+  .nav-link {
+    padding-left: 30px;
+  }
+  .nav-link:hover {
+    background-color: #c70039;
+  }
+}

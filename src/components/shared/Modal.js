@@ -3,31 +3,43 @@ import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import { showModalA } from "../../actions";
 import FilterModal from "./Modal_content/FilterModal";
+import { Modal } from "react-bootstrap";
 
-const Modal = (props) => {
+const myModal = (props) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+
   useEffect(() => {
     if (props.popBgR == false) {
       props.showModalA(null);
     }
   }, [props.popBgR]);
 
-  if (props.ModalR && props.popBgR) {
-    if (props.ModalR.modalType == "profile") {
-      return (
-        <div className="popModal">
-          <div>{props.ModalR.name}</div>
-          <div>{props.ModalR.age}</div>
-          <div>{props.ModalR.sex}</div>
-          <div>{props.ModalR.desc}</div>
-        </div>
-      );
-    }
+  const renderModal = () => {
+    if (props.ModalR && props.popBgR) {
+      if (props.ModalR.modalType == "profile") {
+        return (
+          <div className="popModal">
+            <div>{props.ModalR.name}</div>
+            <div>{props.ModalR.age}</div>
+            <div>{props.ModalR.sex}</div>
+            <div>{props.ModalR.desc}</div>
+          </div>
+        );
+      }
 
-    if (props.ModalR.modalType == "filter") {
-      return <FilterModal />;
+      if (props.ModalR.modalType == "filter") {
+        return <FilterModal />;
+      }
+      return "";
     }
-  }
-  return "";
+  };
+
+  return (
+    <Modal show={show} onHide={handleClose}>
+      {renderModal()}
+    </Modal>
+  );
 };
 
 const mapStateToProps = (state) => {
@@ -37,6 +49,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { showModalA })(Modal);
+export default connect(mapStateToProps, { showModalA })(myModal);
 
 // export default Modal;

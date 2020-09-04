@@ -1,0 +1,12 @@
+.header_wrapper {
+  grid-area: header_wrapper;
+  background-color: #900c3f;
+
+  .dropdown-menu.show {
+    background-color: #900c3f;
+  }
+
+  .dropdown-item:hover {
+    background-color: #c70039;
+  }
+}

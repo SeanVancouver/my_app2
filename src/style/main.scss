@@ -1,68 +1,23 @@
 .my_app {
-  .sub_menu {
-    padding-left: 5px;
-    padding-right: 5px;
-    background-color: lightgray;
-    z-index: 20;
-    position: absolute;
+  @import "./shared/header";
+  @import "./shared/modal";
+  @import "Views/grid";
+  @import "Views/detail";
+  @import "./__global.scss";
+  @import "./__BS_overrides.scss";
 
-    p {
-      padding-bottom: 5px;
-    }
+  display: grid;
+  grid-template-areas:
+    ". header_wrapper"
+    "side_wrapper content_wrapper";
+  grid-template-columns: 160px auto;
 
-    .subContacts,
-    .subSetting,
-    .subViews {
-      display: none;
-    }
-
-    .subContacts.visible,
-    .subSetting.visible,
-    .subViews.visible {
-      display: block;
-    }
+  .side_wrapper {
+    grid-area: side_wrapper;
+    background-color: #900c3f;
   }
 
-  #popBG {
-    display: none;
-    z-index: 10;
-    // background: rgba(0, 0, 0, 0.45);
-    top: 0;
-    left: 0;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-  }
-
-  #popBG.show {
-    display: block;
-  }
-
-  #popBG.show.dark {
-    background: rgba(0, 0, 0, 0.45);
-  }
-
-  .popModal {
-    position: fixed; /* Stay in place */
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: 20;
-  }
-
-  .view_container {
-    display: flex;
-
-    .grid_wrapper {
-      display: grid;
-      justify-items: center;
-      row-gap: 20px;
-      grid-template-columns: repeat(5, 1fr);
-    }
+  .content_wrapper {
+    grid-area: content_wrapper;
   }
 }

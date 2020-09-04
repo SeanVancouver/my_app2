@@ -6,6 +6,7 @@ import DetailView from "./components/Views/DetailView";
 import Header from "./components/shared/Header";
 import ModalBg from "./components/shared/PopBg";
 import Modal from "./components/shared/Modal";
+import SideBar from "./components/shared/SideBar";
 import history from "./history";
 import { usersA } from "./actions";
 
@@ -23,14 +24,19 @@ const App = (props) => {
   return (
     <div className="my_app">
       <Router history={history}>
-        <div>
+        <div className="header_wrapper">
           <Header />
         </div>
-        <Switch>
-          <Route path="/" exact component={GridView} />
-          <Route path="/view-grid" exact component={GridView} />
-          <Route path="/view-detail" exact component={DetailView} />
-        </Switch>
+        <div className="content_wrapper">
+          <Switch>
+            <Route path="/" exact component={GridView} />
+            <Route path="/view-grid" exact component={GridView} />
+            <Route path="/view-detail" exact component={DetailView} />
+          </Switch>
+        </div>
+        <div className="side_wrapper">
+          <SideBar></SideBar>
+        </div>
       </Router>
       <ModalBg />
       <Modal />

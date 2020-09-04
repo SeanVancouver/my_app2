@@ -1,0 +1,12 @@
+.view_container {
+  .grid_wrapper {
+    display: grid;
+    justify-items: stretch;
+    gap: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
+    .grid_image img {
+      width: 100%;
+    }
+  }
+}

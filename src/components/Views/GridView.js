@@ -44,22 +44,6 @@ const GridView = (props) => {
   };
   return (
     <div className="view_container">
-      <div className="filter">
-        <button
-          onClick={() => {
-            modalClicked({ modalType: "filter" });
-          }}
-        >
-          F<br />I<br />L<br />T<br />E<br />R
-        </button>
-        <button
-          onClick={() => {
-            props.usersA();
-          }}
-        >
-          R<br />E<br />F<br />R<br />E<br />S<br />H
-        </button>
-      </div>
       <div className="grid_wrapper">{gridArray()}</div>
     </div>
   );

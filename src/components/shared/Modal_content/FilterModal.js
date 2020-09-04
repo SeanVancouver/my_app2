@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { filterA } from "../../../actions";
 import { connect } from "react-redux";
+import { Form } from "react-bootstrap";
 
 const FilterModal = (props) => {
   const [rangeValue, setRangeValue] = useState(false);
@@ -30,25 +31,36 @@ const FilterModal = (props) => {
   };
 
   return (
-    <div className="popModal">
-      <input
-        ref={ageRef}
-        name="age"
-        type="range"
-        min="0"
-        max="100"
-        onChange={(e) => setRangeValue(e.target.value)}
-      />
-      <label>age: {rangeValue}</label>
-      <br />
-      <input ref={sexRef} type="text" name="sex" />
-      <label>sex</label>
-      <br />
-      <input ref={keywordRef} type="text" name="keyword" />
-      <label>keyword</label>
-      <button onClick={onFormSubmit}>submit</button>
-      <button onClick={onFormClear}>clear</button>
-    </div>
+    <Form>
+      <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Label>Email address</Form.Label>
+        <Form.Control type="email" placeholder="name@example.com" />
+      </Form.Group>
+      <Form.Group controlId="exampleForm.ControlSelect1">
+        <Form.Label>Example select</Form.Label>
+        <Form.Control as="select">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </Form.Control>
+      </Form.Group>
+      <Form.Group controlId="exampleForm.ControlSelect2">
+        <Form.Label>Example multiple select</Form.Label>
+        <Form.Control as="select" multiple>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </Form.Control>
+      </Form.Group>
+      <Form.Group controlId="exampleForm.ControlTextarea1">
+        <Form.Label>Example textarea</Form.Label>
+        <Form.Control as="textarea" rows="3" />
+      </Form.Group>
+    </Form>
   );
 };
 
