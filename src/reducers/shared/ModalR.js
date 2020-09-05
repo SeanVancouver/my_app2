@@ -1,4 +1,4 @@
-const ModalR = (state = null, action) => {
+const ModalR = (state = false, action) => {
   switch (action.type) {
     case "SHOW_MODAL":
       return action.payload;

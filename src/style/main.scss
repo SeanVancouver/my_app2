@@ -1,10 +1,10 @@
+@use "./__global.scss";
+@use "./__BS_overrides.scss";
+@use "./shared/modal";
 .my_app {
   @import "./shared/header";
-  @import "./shared/modal";
   @import "Views/grid";
   @import "Views/detail";
-  @import "./__global.scss";
-  @import "./__BS_overrides.scss";
 
   display: grid;
   grid-template-areas:
@@ -20,4 +20,8 @@
   .content_wrapper {
     grid-area: content_wrapper;
   }
+}
+
+.form_content_wrap {
+  padding: 30px;
 }

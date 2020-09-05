@@ -8,8 +8,6 @@ const getFakerUsers = () => {
     profileArray.push(getOneProfile());
   }
 
-  console.log("GetProfiles GetProfiles " + profileArray);
-
   return profileArray;
 };
 
@@ -21,7 +19,7 @@ const getOneProfile = () => {
     image: faker.image.avatar(),
     name: faker.name.firstName(),
     age: Math.floor(Math.random() * 100),
-    sex: gender[Math.floor(Math.random() * gender.length)],
+    gender: gender[Math.floor(Math.random() * gender.length)],
     desc: faker.lorem.paragraph(),
   };
 };

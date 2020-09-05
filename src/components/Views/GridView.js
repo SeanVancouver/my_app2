@@ -1,25 +1,17 @@
 import React, { useEffect } from "react";
-import { popBgA, usersA, filterA, showModalA } from "../../actions";
+import { usersA, filterA, showModalA } from "../../actions";
 import { connect } from "react-redux";
 
 const GridView = (props) => {
   // console.log("gridview " + JSON.stringify(props));
 
-  useEffect(() => {
-    props.filterA(props.usersR, props.FilterStateR);
-  }, [props.usersR]);
-
   const modalClicked = (profileArr) => {
     props.showModalA(profileArr);
-    props.popBgA(true);
   };
 
-  let profilesLoad = props.FilterR ? props.FilterR : props.usersR;
-
-  // console.log('+++++' + JSON.stringify(profilesLoad) + ' ------- ' + JSON.stringify(props.usersR) );
+  let profilesLoad = props.FilterR;
 
   const gridArray = () => {
-    // return props.usersR.map((eachProfile) => {
     return profilesLoad.map((eachProfile) => {
       // console.log(eachProfile);
       return (
@@ -33,8 +25,8 @@ const GridView = (props) => {
                 image: eachProfile.image,
                 name: eachProfile.name,
                 age: eachProfile.age,
-                sex: eachProfile.sex,
-                // desc: eachProfile.desc,
+                gender: eachProfile.gender,
+                desc: eachProfile.desc,
               });
             }}
           ></img>
@@ -51,15 +43,12 @@ const GridView = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    usersR: state.usersR,
-    popBgR: state.popBgR,
     FilterR: state.FilterR,
     FilterStateR: state.FilterStateR,
   };
 };
 export default connect(mapStateToProps, {
   showModalA,
-  popBgA,
   usersA,
   filterA,
 })(GridView);

@@ -5,7 +5,7 @@ import GridView from "./components/Views/GridView";
 import DetailView from "./components/Views/DetailView";
 import Header from "./components/shared/Header";
 import ModalBg from "./components/shared/PopBg";
-import Modal from "./components/shared/Modal";
+import MyModal from "./components/shared/Modal";
 import SideBar from "./components/shared/SideBar";
 import history from "./history";
 import { usersA } from "./actions";
@@ -15,7 +15,7 @@ const App = (props) => {
   //   props.popBgA(false);
   // };
 
-  props.usersA();
+  props.usersA(props.FilterStateR);
   // useEffect(() => {
   //   console.log("why continuous call?");
   //   props.usersA();
@@ -39,7 +39,7 @@ const App = (props) => {
         </div>
       </Router>
       <ModalBg />
-      <Modal />
+      <MyModal />
 
       {/* <div
         id="popBG"
@@ -51,7 +51,7 @@ const App = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return { usersR: state.usersR };
+  return { FilterStateR: state.FilterStateR };
 };
 
-export default connect(null, { usersA })(App);
+export default connect(mapStateToProps, { usersA })(App);

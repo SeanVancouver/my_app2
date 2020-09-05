@@ -1,12 +1,12 @@
 import React from "react";
-import { popBgA, usersA, filterA, showModalA } from "../../actions";
+import { usersA, showModalA } from "../../actions";
 import { connect } from "react-redux";
 import { Nav } from "react-bootstrap";
 
 function SideBar(props) {
   const modalClicked = (profileArr) => {
+    console.log("profileArr " + JSON.stringify(profileArr));
     props.showModalA(profileArr);
-    // props.popBgA(true);
   };
 
   return (
@@ -20,7 +20,7 @@ function SideBar(props) {
       </Nav.Link>
       <Nav.Link
         onClick={() => {
-          props.usersA();
+          props.usersA(props.FilterStateR);
         }}
       >
         REFRESH
@@ -31,15 +31,11 @@ function SideBar(props) {
 
 const mapStateToProps = (state) => {
   return {
-    usersR: state.usersR,
-    popBgR: state.popBgR,
     FilterR: state.FilterR,
     FilterStateR: state.FilterStateR,
   };
 };
 export default connect(mapStateToProps, {
   showModalA,
-  popBgA,
   usersA,
-  filterA,
 })(SideBar);

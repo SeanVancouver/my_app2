@@ -2,53 +2,41 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import { showModalA } from "../../actions";
-import FilterModal from "./Modal_content/FilterModal";
+import Filter from "./Modal_content/Filter";
+import Profile from "./Modal_content/Profile";
 import { Modal } from "react-bootstrap";
 
-const myModal = (props) => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-
-  useEffect(() => {
-    if (props.popBgR == false) {
-      props.showModalA(null);
-    }
-  }, [props.popBgR]);
-
-  const renderModal = () => {
-    if (props.ModalR && props.popBgR) {
-      if (props.ModalR.modalType == "profile") {
-        return (
-          <div className="popModal">
-            <div>{props.ModalR.name}</div>
-            <div>{props.ModalR.age}</div>
-            <div>{props.ModalR.sex}</div>
-            <div>{props.ModalR.desc}</div>
-          </div>
-        );
-      }
-
-      if (props.ModalR.modalType == "filter") {
-        return <FilterModal />;
-      }
-      return "";
-    }
+const MyModal = (props) => {
+  const [show, setShow] = useState(true);
+  const handleClose = () => {
+    setShow(false);
+    props.showModalA(false);
   };
 
-  return (
-    <Modal show={show} onHide={handleClose}>
-      {renderModal()}
-    </Modal>
-  );
+  if (props.ModalR) {
+    if (props.ModalR.modalType == "profile") {
+      return (
+        <Modal show={props.ModalR !== false} onHide={() => handleClose()}>
+          <Profile profile={props.ModalR} />
+        </Modal>
+      );
+    } else if (props.ModalR.modalType == "filter") {
+      return (
+        <Modal show={props.ModalR !== false} onHide={() => handleClose()}>
+          <Filter submitClose={handleClose} />
+        </Modal>
+      );
+    }
+  }
+  return "";
 };
 
 const mapStateToProps = (state) => {
   return {
     ModalR: state.ModalR,
-    popBgR: state.popBgR,
   };
 };
 
-export default connect(mapStateToProps, { showModalA })(myModal);
+export default connect(mapStateToProps, { showModalA })(MyModal);
 
 // export default Modal;

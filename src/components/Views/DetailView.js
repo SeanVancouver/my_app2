@@ -1,13 +1,9 @@
 import React, { useEffect } from "react";
-import { popBgA, usersA, filterA, showModalA } from "../../actions";
+import { usersA, filterA, showModalA } from "../../actions";
 import { connect } from "react-redux";
 
 const DetailView = (props) => {
-  useEffect(() => {
-    props.filterA(props.usersR, props.FilterStateR);
-  }, [props.usersR]);
-
-  let profilesLoad = props.FilterR ? props.FilterR : props.usersR;
+  let profilesLoad = props.FilterR;
 
   const gridArray = () => {
     return profilesLoad.map((eachProfile) => {
@@ -18,7 +14,7 @@ const DetailView = (props) => {
             <div className="flex stats">
               <h5>{eachProfile.name},&nbsp;</h5>
               <h5>{eachProfile.age},&nbsp;</h5>
-              <h5>{eachProfile.sex}</h5>
+              <h5>{eachProfile.gender}</h5>
             </div>
             <div className="desc">{eachProfile.desc}</div>
           </div>
@@ -35,15 +31,12 @@ const DetailView = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    usersR: state.usersR,
-    popBgR: state.popBgR,
     FilterR: state.FilterR,
     FilterStateR: state.FilterStateR,
   };
 };
 export default connect(mapStateToProps, {
   showModalA,
-  popBgA,
   usersA,
   filterA,
 })(DetailView);

@@ -8,18 +8,28 @@ import FilterProfiles from "../helpers/Views/FilterProfiles";
 //   };
 // };
 
-export const usersA = () => {
+export const usersA = (FilterStateR) => {
   return {
-    type: "USERS",
-    payload: getFakerUsers(),
-    // payload: { test: "123" },
+    type: "FILTER_USERS",
+    payload: FilterProfiles(getFakerUsers(), FilterStateR),
   };
 };
 
-export const filterA = (filteree, filtered) => async (dispatch) => {
+// export const usersA = () => {
+//   return {
+//     type: "USERS",
+//     payload: getFakerUsers(),
+//   };
+// };
+
+export const filterA = (profileList, selection) => async (dispatch) => {
   dispatch({
     type: "FILTER_USERS",
-    payload: FilterProfiles(filteree, filtered),
+    payload: FilterProfiles(profileList, selection),
   });
-  dispatch({ type: "FILTER_STATE", payload: filtered });
+
+  console.log(
+    "FILTER_STATEFILTER_STATEFILTER_STATE " + JSON.stringify(selection)
+  );
+  dispatch({ type: "FILTER_STATE", payload: selection });
 };

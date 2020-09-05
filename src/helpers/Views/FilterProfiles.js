@@ -1,31 +1,30 @@
 // export default getProfileList;
 
-const FilterProfiles = (mapSelection, filterList) => {
-  console.log(
-    JSON.stringify(mapSelection) +
-      " mapselection zzzz " +
-      JSON.stringify(filterList)
-  );
-  if (filterList) {
-    // mapSelection = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+const FilterProfiles = (profileList, selection) => {
+  console.log("but this is not even called??? " + JSON.stringify(selection));
 
-    // filterList = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
-
-    let filteredJSON = mapSelection.filter((s) => {
-      return (
-        (parseInt(s.age) < parseInt(filterList.age) ||
-          filterList.age === "any") &&
-        (s.sex === filterList.sex || filterList.sex === "any")
-        // && (s.desc.includes(filterList.keyword) || filterList.keyword === "any")
-      );
-    });
-
-    console.log("filteredJSONfilteredJSON " + JSON.stringify(filteredJSON));
-
-    return filteredJSON;
+  let finalGender;
+  if (selection.gender.female && !selection.gender.male) {
+    finalGender = "female";
+  } else if (selection.gender.male && !selection.gender.female) {
+    finalGender = "male";
+  } else {
+    finalGender = "any";
   }
 
-  return mapSelection;
+  let filteredJSON = profileList.filter((s) => {
+    return (
+      // If selection.age === "any", which it will be for default undefined, we return that s instance
+      (parseInt(s.age) < parseInt(selection.age) || selection.age === "any") &&
+      (s.gender === finalGender || finalGender === "any") &&
+      (s.desc.includes(selection.keyword) || selection.keyword === "any")
+    );
+  });
+
+  return filteredJSON;
+  // }
+
+  return profileList;
 };
 
 export default FilterProfiles;

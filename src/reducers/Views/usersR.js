@@ -1,5 +1,5 @@
 const usersR = (state = null, action) => {
-  console.log(action.type + "===> " + action.payload);
+  console.log("USERS DISPATCHED?");
   switch (action.type) {
     case "USERS":
       return action.payload;

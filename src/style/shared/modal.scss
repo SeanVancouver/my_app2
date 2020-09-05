@@ -1,31 +1,6 @@
-#popBG {
-  display: none;
-  z-index: 10;
-  // background: rgba(0, 0, 0, 0.45);
-  top: 0;
-  left: 0;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-}
-
-#popBG.show {
-  display: block;
-}
-
-#popBG.show.dark {
-  background: rgba(0, 0, 0, 0.45);
-}
-
-.popModal {
-  position: fixed; /* Stay in place */
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+.profileModal {
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 20;
+  .right_content {
+    margin-left: 15px;
+  }
 }
