@@ -5,7 +5,6 @@ import { Nav } from "react-bootstrap";
 
 function SideBar(props) {
   const modalClicked = (profileArr) => {
-    console.log("profileArr " + JSON.stringify(profileArr));
     props.showModalA(profileArr);
   };
 

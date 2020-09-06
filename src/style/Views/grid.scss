@@ -8,5 +8,8 @@
     .grid_image img {
       width: 100%;
     }
+    .grid_image img:hover {
+      transform: scale(1.2);
+    }
   }
 }
