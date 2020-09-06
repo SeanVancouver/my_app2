@@ -25,9 +25,7 @@
     "sass": "^1.26.10"
   },
   "scripts": {
-    "start": "if-env RC_ENV=production ?? npm run start:prod || npm run start:dev",
-    "start:dev": "react-scripts start",
-    "start:prod": "node server.js",
+    "start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
