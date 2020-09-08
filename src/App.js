@@ -15,40 +15,14 @@ import SiteRoutes from "./router/SiteRoutes";
 import PrivateRoute from "./helpers/shared/PrivateRoute";
 
 const App = (props) => {
-  const [userData, setUserData] = useState({
-    token: undefined,
-    user: undefined,
-  });
+  // const [userData, setUserData] = useState({
+  //   token: undefined,
+  //   user: undefined,
+  // });
   props.usersA(props.FilterStateR);
 
   // useEffect(() => {
-  const checkLoggedIn = () => {
-    let token = localStorage.getItem("auth-token");
-    if (token === null) {
-      localStorage.setItem("auth-token", "");
-      token = "";
-    }
-    const tokenRes = Axios.post(
-      "http://localhost:5000/users/tokenIsValid",
-      null,
-      { headers: { "x-auth-token": token } }
-    );
-    if (tokenRes.data) {
-      console.log("when is await called? ");
-      const userRes = Axios.get("http://localhost:5000/users/", {
-        headers: { "x-auth-token": token },
-      });
 
-      console.log("when do you get called?");
-
-      setUserData({
-        token,
-        user: userRes.data,
-      });
-    }
-  };
-
-  checkLoggedIn();
   // }, []);
 
   return (
@@ -66,7 +40,7 @@ const App = (props) => {
             />
             <Route path="/register" exact component={Register} />
             {/* <SiteRoutes /> */}
-            <PrivateRoute usereD={userData}>
+            <PrivateRoute>
               <SiteRoutes />
             </PrivateRoute>
           </Switch>

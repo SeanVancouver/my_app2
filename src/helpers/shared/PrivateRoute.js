@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,24 +9,50 @@ import {
   useLocation,
 } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
+import Axios from "axios";
 
-function PrivateRoute({ usereD, children, ...rest }) {
-  const { userData } = useContext(UserContext);
-
+function PrivateRoute({ children, ...rest }) {
   let landingPath = useLocation();
+  let userInfo = "";
 
-  console.log("called only when needed ? ");
-  debugger;
+  const checkLoggedIn = async () => {
+    // >>>>>>> 1ST TO BE CALLED
 
-  if (!usereD) {
-    return <div>nothing</div>;
-  }
+    let token = localStorage.getItem("auth-token");
+    if (token === null) {
+      localStorage.setItem("auth-token", "");
+      token = "";
+    }
+    const tokenRes = await Axios.post(
+      "http://localhost:5000/users/tokenIsValid",
+      null,
+      { headers: { "x-auth-token": token } }
+    );
+    if (tokenRes.data) {
+      const userRes = await Axios.get("http://localhost:5000/users/", {
+        headers: { "x-auth-token": token },
+      });
+
+      //   >>>>>>> LAST TO BE CALLED!
+      console.log(">>>>>> " + userRes.data.user);
+      let userInfo = userRes.data.user;
+      //   return userRes.data.user;
+    }
+  };
+
+  checkLoggedIn();
+
+  //   if (!userInfo) {
+
+  //     return <div>nothing</div>;
+
+  //   }
 
   return (
     <Route
       {...rest}
       render={() =>
-        usereD.user ? (
+        "checkLoggedIn()" ? (
           children
         ) : (
           <Redirect
