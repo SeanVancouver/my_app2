@@ -1,16 +1,20 @@
 @use "./__global.scss";
 @use "./__BS_overrides.scss";
 @use "./shared/modal";
-.my_app {
+.site_app {
   @import "./shared/header";
   @import "Views/grid";
   @import "Views/detail";
 
   display: grid;
   grid-template-areas:
-    ". header_wrapper"
+    "top_left_bloc header_wrapper"
     "side_wrapper content_wrapper";
   grid-template-columns: 160px auto;
+
+  .top_left_bloc {
+    grid-area: top_left_bloc;
+  }
 
   .side_wrapper {
     grid-area: side_wrapper;

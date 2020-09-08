@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useContext } from "react";
 import { usersA, filterA, showModalA } from "../../actions";
 import { connect } from "react-redux";
+import UserContext from "../../context/UserContext";
 
 const GridView = (props) => {
-  // console.log("gridview " + JSON.stringify(props));
+  // const { userData, setUserData } = useContext(UserContext);
 
+  // console.log("userData logreg " + JSON.stringify(userData));
   const modalClicked = (profileArr) => {
     props.showModalA(profileArr);
   };

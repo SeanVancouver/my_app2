@@ -4,10 +4,3 @@ export const showModalA = (infoArr) => {
     payload: infoArr,
   };
 };
-
-export const popBgA = (onoff) => {
-  return {
-    type: "POP_BG",
-    payload: onoff,
-  };
-};

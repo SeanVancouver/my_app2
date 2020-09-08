@@ -1,16 +1,18 @@
 import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
-import UserContext from "../../../context/UserContext";
+import { useHistory, Link } from "react-router-dom";
+import { UserContext } from "../../../context/UserContext";
 import Axios from "axios";
 import ErrorNotice from "../../shared/ErrorNotice";
 
-export default function Login() {
+export default function Login(props) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
 
-  const { setUserData } = useContext(UserContext);
+  const { userData, setUserData } = useContext(UserContext);
   const history = useHistory();
+
+  console.log("userData logreg " + JSON.stringify(userData));
 
   const submit = async (e) => {
     e.preventDefault();
@@ -26,7 +28,7 @@ export default function Login() {
       });
       localStorage.setItem("auth-token", loginRes.data.token);
       console.log("logged in " + loginRes.data.token);
-      history.push("/view-grid");
+      history.push(props.location.state.from);
     } catch (err) {
       err.response.data.msg && setError(err.response.data.msg);
     }
@@ -34,6 +36,7 @@ export default function Login() {
   return (
     <div className="page">
       <h2>Log in</h2>
+      <Link to="/view-grid">View Grid</Link>
       {error && (
         <ErrorNotice message={error} clearError={() => setError(undefined)} />
       )}
