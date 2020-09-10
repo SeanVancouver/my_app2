@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useHistory, Link } from "react-router-dom";
-import { UserContext } from "../../../context/UserContext";
+import UserContext from "../../../context/UserContext";
 import Axios from "axios";
 import ErrorNotice from "../../shared/ErrorNotice";
 
@@ -30,6 +30,7 @@ export default function Login(props) {
       console.log("logged in " + loginRes.data.token);
       history.push(props.location.state.from);
     } catch (err) {
+      console.log("errerrerr " + err);
       err.response.data.msg && setError(err.response.data.msg);
     }
   };

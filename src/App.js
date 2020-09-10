@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Directory from "./components/Views/Directory";
 import Register from "./components/Views/auth/Register";
 import LogReg from "./components/Views/auth/LogReg";
-import { UserCProvider } from "./context/UserContext";
+import UserContext from "./context/UserContext";
 import Header from "./components/shared/Header";
 import MyModal from "./components/shared/Modal";
 import SideBar from "./components/shared/SideBar";
@@ -15,10 +15,10 @@ import SiteRoutes from "./router/SiteRoutes";
 import PrivateRoute from "./helpers/shared/PrivateRoute";
 
 const App = (props) => {
-  // const [userData, setUserData] = useState({
-  //   token: undefined,
-  //   user: undefined,
-  // });
+  const [userData, setUserData] = useState({
+    token: undefined,
+    user: undefined,
+  });
   props.usersA(props.FilterStateR);
 
   // useEffect(() => {
@@ -28,9 +28,8 @@ const App = (props) => {
   return (
     <div className="">
       <Router history={history}>
-        <UserCProvider>
-          {/* <UserCProvider value={[userData, setUserData]}> */}
-
+        {/* MUST KEEP IT UNDER {} NOT [] SO THAT IT CAN BE CALLED AS A FUNCTION */}
+        <UserContext.Provider value={{ userData, setUserData }}>
           <Switch>
             <Route path="/" exact component={Directory} />
             <Route
@@ -44,7 +43,7 @@ const App = (props) => {
               <SiteRoutes />
             </PrivateRoute>
           </Switch>
-        </UserCProvider>
+        </UserContext.Provider>
       </Router>
       <MyModal />
     </div>
